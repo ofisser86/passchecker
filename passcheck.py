@@ -1,4 +1,4 @@
-import  requests
+import requests
 import hashlib
 import sys
 
@@ -24,15 +24,31 @@ def pwned_api_check(password: str) -> str:
     return get_password_leaks_count(response, tail)
 
 
-# (f"Your password was hacked {count} time{'s' if count == 1 else ''}")
 def main(args):
-    for password in args:
-        count = pwned_api_check(password)
-        if count:
-            print(f"Your {password} was hacked {count} time{'s' if count == 1 else ''}")
-        else:
-            print("Password was not hached")
-    return "done"
+    file_with_passwords = args[0]
+    try:
+        with open(file_with_passwords, 'r') as f:
+            passwords_list = f.readlines()
+            for password in passwords_list:
+                count = pwned_api_check(password.strip())
+                if count:
+                    print(f"Your password {password.strip()} was hacked {count} time{'' if count == 1 else 's'}")
+                else:
+                    print("Password was not hached")
+        return "done"
+
+    except FileNotFoundError as er:
+            print('Second try -> file does not exist in this funny library', er)
 
 
-main(sys.argv[1:])
+    # !!!!!!! ================== DANGER NOT SAFETY METHOD ==================== Use this for writes passwords in script arguent 
+    # for password in args:
+    #     count = pwned_api_check(password)
+    #     if count:
+    #         print(f"Your password {password} was hacked {count} time{'' if count == 1 else 's'}")
+    #     else:
+    #         print("Password was not hached")
+    # return "done"
+
+if __name__ == "__main__":
+   sys.exit(main(sys.argv[1:]))
