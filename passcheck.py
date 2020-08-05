@@ -2,6 +2,7 @@ import requests
 import hashlib
 import sys
 
+# Check the pwnedpasswords service, get the passwords hashes 
 def request_api_data(query_char):
     url = 'https://api.pwnedpasswords.com/range/' + str(query_char)
     res = requests.get(url)
@@ -9,6 +10,7 @@ def request_api_data(query_char):
         raise RuntimeError(f"Error fetching: {res.status_code}, check the api and try again")
     return res
 
+# Check if passwords exists in leaks passwords
 def get_password_leaks_count(hashs, hash_to_check):
     hashs_count_split = (line.split(':') for line in hashs.text.splitlines())
     for h, count in hashs_count_split:
@@ -17,6 +19,9 @@ def get_password_leaks_count(hashs, hash_to_check):
     return 0
 
 def pwned_api_check(password: str) -> str:
+    """
+    Create haxsh password, devide it and return the list of known passwords hashs 
+    """
     sha256password = hashlib.sha1(password.encode('UTF_8')).hexdigest().upper()
     # unpacking pass
     first5character, tail = sha256password[:5], sha256password[5:]
@@ -24,6 +29,7 @@ def pwned_api_check(password: str) -> str:
     return get_password_leaks_count(response, tail)
 
 
+# Read the file with passwords you want to check
 def main(args):
     file_with_passwords = args[0]
     try:
