@@ -18,3 +18,6 @@
 1. In the same directory as `passcheck.py` edit the file words.txt with list of your passwords
 2. Write passwords line by line
 3. Run `python `passchecker.py
+
+#### To try the Passchecker App and check you password follow the link  [![Run on Repl.it](https://repl.it/badge/github/ofisser86/passchecker)](https://repl.it/github/ofisser86/passchecker)
+
