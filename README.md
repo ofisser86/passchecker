@@ -15,7 +15,7 @@
 7. Installs all packages specified in Pipfile.lock `pipenv` update
 
 ### Create file passwords
-1. In the same directory as `passcheck.py` edit the file words.txt with list of your passwords
+1. In the same directory as `passcheck.py` edit the file `words.txt` with list of your passwords
 2. Write passwords line by line
 3. Run `python `passchecker.py
 
