@@ -1,6 +1,13 @@
+# Import libs
 import requests
 import hashlib
 import sys
+
+
+def prRed(skk): return "\033[31m {}\033[00m" .format(skk)
+def prGreen(skk): return "\033[92m {}\033[00m" .format(skk)
+def prYellow(skk): return "\033[93m {}\033[00m" .format(skk)
+
 
 # Check the pwnedpasswords service, get the passwords hashes 
 def request_api_data(query_char):
@@ -38,16 +45,16 @@ def main(args):
             for password in passwords_list:
                 count = pwned_api_check(password.strip())
                 if count:
-                    print(f"Your password {password.strip()} was hacked {count} time{'' if count == 1 else 's'}")
+                    print("Your password" + prRed(f"{password.strip()}") + " was hacked " + prYellow(f"{count}") + f" time{'' if count == 1 else 's'}")
                 else:
-                    print("Password was not hached")
+                    print(prGreen("Good.") + " Password was not hached")
         return "done"
 
     except FileNotFoundError as er:
             print('Second try -> file does not exist in this funny library', er)
 
 
-    # !!!!!!! ================== DANGER NOT SAFETY METHOD ==================== Use this for writes passwords in script arguent 
+    # !!!!!!! ================== DANGER NOT SAFETY METHOD ==================== Use this for writes passwords as script arguent 
     # for password in args:
     #     count = pwned_api_check(password)
     #     if count:
