@@ -20,4 +20,3 @@
 3. Run `python `passchecker.py
 
 #### To try the Passchecker App and check you password follow the link  [![Run on Repl.it](https://repl.it/badge/github/ofisser86/passchecker)](https://repl.it/github/ofisser86/passchecker)
-
