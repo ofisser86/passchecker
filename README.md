@@ -19,4 +19,6 @@
 2. Write passwords line by line
 3. Run `python `passchecker.py
 
-#### To try the Passchecker App and check you password follow the link  [![Run on Repl.it](https://repl.it/badge/github/ofisser86/passchecker)](https://repl.it/github/ofisser86/passchecker)
+#### To try the Passchecker App and check you password follow the link  [![Run on Repl.it](https://repl.it/badge/github/ofisser86/passchecker)](https://replit.com/@ofisser86/passchecker-2)
+
+[Source code](https://github.com/ofisser86/passchecker/blob/master/passcheck.py)
